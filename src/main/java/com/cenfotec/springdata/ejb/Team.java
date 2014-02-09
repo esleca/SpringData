@@ -22,7 +22,7 @@ public class Team implements Serializable {
 	private String stadium;
 	private String coach;
 		
-	@OneToMany(cascade={CascadeType.ALL},mappedBy="team")
+	@OneToMany(cascade={CascadeType.ALL}, mappedBy="team")
 	private List<Player> players;
 		
 	public Team() {

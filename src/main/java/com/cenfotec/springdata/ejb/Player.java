@@ -27,7 +27,7 @@ public class Player implements Serializable{
 	
 	//RELATIONSHIPS
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="fk_team_id")
+	@JoinColumn(name="fk_teamId")
 	private Team team;
 			
 	public Player() {
