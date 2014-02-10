@@ -12,7 +12,6 @@ App.config(function ($routeProvider,$provide,$httpProvider) {
         controller: HomeController
     });
 	
-	
 	$routeProvider.otherwise({redirectTo: '/'});
 	
 	//RESPONSE INTERCEPTOR FOR ALL THE ANGULAR CALLS
