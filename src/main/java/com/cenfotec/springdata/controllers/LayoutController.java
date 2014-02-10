@@ -12,4 +12,10 @@ public class LayoutController {
 	{
 		return "home";
 	}
+	
+	@RequestMapping(value = "/player/createPlayerModal")
+	public String getCreatePlayerModal()
+	{
+		return "modals/createPlayerModal";
+	}
 }

@@ -4,7 +4,7 @@
  * Home
  * @constructor
  */
-var HomeController = function($scope, $http,$location) {
+var HomeController = function($scope, $http,$location, $modal, $log) {
 	$scope.requestObject = {};
 	$scope.requestObject.pageNumber = 1;
 	$scope.requestObject.pageSize = 10;
@@ -99,7 +99,7 @@ var HomeController = function($scope, $http,$location) {
 		sortname : 'id',
 		viewrecords : true,
 		sortorder : "desc",
-		caption : "Players",
+		caption : "Player",
 		loadComplete : function() {
 			var table = this;
 			setTimeout(function(){
@@ -143,10 +143,10 @@ var HomeController = function($scope, $http,$location) {
 	
 	$scope.items = ['item1', 'item2', 'item3'];
 
-	$scope.open = function(){
-		console.log("En Open()");
-		var modalInstance = $modal.open({
-			templateUrl: 'layoutservice/user/createUserModal',
+	$scope.createPlayer = function(){
+		console.log("opening createPlayer method");
+		var modalInstance = $modal.createPlayer({
+			templateUrl: 'layoutservice/player/createPlayerModal',
 			controller: ModalInstanceCtrl,
 			resolve: {
 				items: function () {
@@ -164,8 +164,8 @@ var HomeController = function($scope, $http,$location) {
 	};
 	
 	$("#add_playersList .ui-pg-div").click(function(ev){
-		$("#openAddNewUserModal").click();
-		//$scope.open();
+		$("#openAddNewPlayerModal").click();
+		$scope.createPlayer();
 	});
 };
 
@@ -189,15 +189,15 @@ var ModalInstanceCtrl = function ($http,$scope, $modalInstance, items) {
 	$scope.onError = false;
 	$scope.tipoUsuarioList = [];
 	
-	$scope.EMAIL_REGEXP = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+	//$scope.EMAIL_REGEXP = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 	
 	$scope.init = function(){
 		
-		$http.get('rest/protected/tipoUsuario/getAll')
+		$http.get('rest/protected/team/getAllTeams')
 		.success(function(response) {
 
-			$scope.tipoUsuarioList = response.tipoUsuarioList;
-			$scope.requestObject.user.idTipoUsuario = $scope.tipoUsuarioList[0].idTipoUsuario;
+			$scope.teamList = response.teamList;
+			$scope.requestObject.player.teamId = $scope.teamList[0].teamId;
 			
 		});
 		
@@ -205,15 +205,15 @@ var ModalInstanceCtrl = function ($http,$scope, $modalInstance, items) {
 	
 	$scope.init();
 	
-	$scope.create = function(event) {
+	$scope.createPlayer = function(event) {
 		
-		if(this.createUserForm.$valid){
+		if(this.createPlayerForm.$valid){
 			this.onError = false;
 			
-			$http.post('rest/protected/player/create',$scope.requestObject)
+			$http.post('rest/protected/player/createPlayer',$scope.requestObject)
 			.success(function(response) {
 
-				if(response.code === 200){
+				if(response.code === 200) {
 					$modalInstance.close();
 				}
 				

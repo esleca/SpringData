@@ -43,7 +43,7 @@
 					<div id="playersPager"></div>
 				</div>
 				
-				<button type="button" id="openAddNewUserModal" class="hide btn btn-default" ng-click="open()">D</button>
+				<button type="button" id="openAddNewPlayerModal" class="hide btn btn-default" ng-click="createPlayer()">D</button>
 			    
 			</div>
 		</div>
