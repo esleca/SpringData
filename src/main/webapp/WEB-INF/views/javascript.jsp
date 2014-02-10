@@ -23,6 +23,8 @@
 
 <script src="resources/js/app.js"></script>
 
+<script src="resources/js/controllers/HomeController.js"></script>
+
 <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="resources/js/lib/ui-bootstrap-tpls-0.9.0.min.js"></script>
 

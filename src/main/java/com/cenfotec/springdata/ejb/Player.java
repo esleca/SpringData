@@ -82,5 +82,13 @@ public class Player implements Serializable{
 	public void setDorsal(int pDorsal) {
 		this.dorsal = pDorsal;
 	}
+	
+	public Team getTeam(){
+		return team;
+	}
+	
+	public void setTeam(Team pTeam){
+		this.team = pTeam;
+	}
 
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var Cenfoteca = {};
+var SpringData = {};
 
 var App = angular.module('SpringData', []);
 
@@ -11,7 +11,7 @@ App.config(function ($routeProvider,$provide,$httpProvider) {
         templateUrl: 'home',
         controller: HomeController
     });
-	
+
 	$routeProvider.otherwise({redirectTo: '/'});
 	
 	//RESPONSE INTERCEPTOR FOR ALL THE ANGULAR CALLS

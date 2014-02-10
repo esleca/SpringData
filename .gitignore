@@ -2,3 +2,4 @@
 /.settings
 .project
 .classpath
+/src/main/java/com/cenfotec/springdata/config/HibernateConfig.java

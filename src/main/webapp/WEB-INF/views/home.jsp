@@ -2,7 +2,6 @@
 <%@ page session="false" %>
 <html ng-app="SpringData">
 	<head>	
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
 		<script src="resources/js/HomeController.js"></script>
 		<title>Spring Data JPA Example</title>
 	    <meta charset="utf-8">
