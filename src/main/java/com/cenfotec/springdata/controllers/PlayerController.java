@@ -61,10 +61,10 @@ public class PlayerController {
 	@Path("/createPlayer")
 	@POST
 	public PlayerResponse createPlayer(PlayerRequest pr){
-		
+		System.out.println("Iniciando creacion PLAYER");
 		PlayerResponse playerResponse = new PlayerResponse();
 		
-		Team team = teamService.getTeamById(pr.getPlayer().getTeamId());
+		Team team = teamService.getTeamById(1/*pr.getPlayer().getTeamId()*/);
 		
 		Player player = new Player();
 		player.setFirstname(pr.getPlayer().getFirstname());
@@ -78,6 +78,7 @@ public class PlayerController {
 			playerResponse.setCode(200);
 			playerResponse.setCodeMessage("player created successfully");
 		}		
+		System.out.println("fINALIZANDO creacion PLAYER");
 		return playerResponse;
 	}
 	

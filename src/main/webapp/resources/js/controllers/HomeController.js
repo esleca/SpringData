@@ -145,7 +145,7 @@ var HomeController = function($scope, $http,$location, $modal, $log) {
 
 	$scope.createPlayer = function(){
 		console.log("opening createPlayer method");
-		var modalInstance = $modal.createPlayer({
+		var modalInstance = $modal.open({
 			templateUrl: 'layoutservice/player/createPlayerModal',
 			controller: ModalInstanceCtrl,
 			resolve: {
@@ -183,13 +183,8 @@ var ModalInstanceCtrl = function ($http,$scope, $modalInstance, items) {
 	$scope.requestObject.searchColumn = "";
 	$scope.requestObject.searchTerm = "";
 	
-	$scope.requestObject.user = {};
-	$scope.requestObject.user.password = "";
-	
 	$scope.onError = false;
-	$scope.tipoUsuarioList = [];
-	
-	//$scope.EMAIL_REGEXP = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+	$scope.teamList = [];
 	
 	$scope.init = function(){
 		

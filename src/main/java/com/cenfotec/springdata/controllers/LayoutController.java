@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LayoutController {			
 	
 	@RequestMapping(value = "/playerslayout")
-	public String getUsersLayout()
+	public String getPlayersLayout()
 	{
 		return "home";
 	}

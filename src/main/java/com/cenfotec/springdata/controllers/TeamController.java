@@ -51,6 +51,7 @@ public class TeamController {
 		}
 		
 		teamResponse.setTeams(viewTeams);
+		System.out.println("Teams quantity: " + teamResponse.getTeams().size());
 		return teamResponse;		
 	}
 	
