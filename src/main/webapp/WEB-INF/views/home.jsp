@@ -1,8 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<html ng-app="SpringData">
+<html xmlns:ng="http://angularjs.org" class="ng-app:SpringData" id="ng-app" ng-app="SpringData">
 	<head>	
-		<script src="resources/js/HomeController.js"></script>
 		<title>Spring Data JPA Example</title>
 	    <meta charset="utf-8">
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -40,8 +39,8 @@
 	
 	<!-- please put the jqgrid inside a div, because is causing some angular problems -->
 	<div>
-		<table id="usersList"></table> 
-		<div id="usersPager"></div>
+		<table id="playersList"></table> 
+		<div id="playersPager"></div>
 	</div>
 	
 	<button type="button" id="openAddNewUserModal" class="hide btn btn-default" ng-click="open()">D</button>

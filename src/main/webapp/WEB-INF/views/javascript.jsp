@@ -21,6 +21,10 @@
 <script src="resources/js/lib/angular/angular-dragdrop.min.js"></script>
 <script src="resources/js/lib/jquery.scrollTo.min.js"></script>
 
+<!-- UPLOAD FILE -->
+<script src="resources/js/uploadfile/angular-file-upload-shim.min.js"></script>
+<script src="resources/js/uploadfile/angular-file-upload.min.js"></script>
+
 <script src="resources/js/app.js"></script>
 
 <script src="resources/js/controllers/HomeController.js"></script>

@@ -1,11 +1,10 @@
 'use strict';
 
 /**
- * Users
+ * Home
  * @constructor
  */
-var HomeController = function($scope, $http,$location,$modal,$log) {
-	console.log("zaa1");
+var HomeController = function($scope, $http,$location) {
 	$scope.requestObject = {};
 	$scope.requestObject.pageNumber = 1;
 	$scope.requestObject.pageSize = 10;
@@ -15,30 +14,31 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 	$scope.requestObject.searchTerm = "";
 	
     $scope.init = function() {
-    	
+    	console.log("zaaaaaa");
     };
     
     $scope.init();
     
-    var grid_selector = "#usersList";
-	var pager_selector = "#usersPager";
-	
-    jQuery(grid_selector).jqGrid(
+    var grid_selector = "#playersList";
+	var pager_selector = "#playersPager";
+    jQuery(grid_selector).jqGrid(    
 	{
-		url : 'rest/protected/users/getAll',
+		url : 'rest/protected/player/getAllPlayers',
 		datatype: "json",
 		mtype: "POST",
 		ajaxGridOptions: { contentType: 'application/json; charset=utf-8' },
 		ajaxRowOptions: { contentType: "application/json; charset=utf-8", dataType: "json" },
 		postData: JSON.stringify($scope.requestObject),
-		colNames : [ 'Name', 'Last Name'],
+		colNames : [ 'Name', 'Last Name', 'Dorsal'],
 		colModel : [ {
 			name : 'firstname'
 		}, {
-			name : 'lastname',
+			name : 'lastname'
+		}, {
+			name : 'dorsal',
 		}],
 		jsonReader : {
-	    	root:"usuarios",
+	    	root:"players",
 	        page:  $scope.requestObject.pageNumber,
 	        total: function (obj) {
 	        	
@@ -99,7 +99,7 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 		sortname : 'id',
 		viewrecords : true,
 		sortorder : "desc",
-		caption : "Users",
+		caption : "Players",
 		loadComplete : function() {
 			var table = this;
 			setTimeout(function(){
@@ -116,7 +116,7 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 	});
 	
 	function enableTooltips(table) {
-		$('#add_usersList')[0].title = "Add new user";
+		$('#add_playersList')[0].title = "Add new player";
 	}
 	
 	$scope.setSearchColumn = function(searchValue,event){
@@ -131,12 +131,12 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 	};
 	
 	$(window).bind('resize', function() {
-		$("#usersList").setGridWidth($(window).width()-300);
+		$("#playersList").setGridWidth($(window).width()-300);
 	}).trigger('resize');
 	
 	
 	//CUSTOM ACTIONS
-	$("#add_usersList .ui-pg-div").click(function(ev){
+	$("#add_playersList .ui-pg-div").click(function(ev){
 		ev.preventDefault();
 		return false;
 	});
@@ -144,7 +144,7 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 	$scope.items = ['item1', 'item2', 'item3'];
 
 	$scope.open = function(){
-		
+		console.log("En Open()");
 		var modalInstance = $modal.open({
 			templateUrl: 'layoutservice/user/createUserModal',
 			controller: ModalInstanceCtrl,
@@ -163,11 +163,13 @@ var HomeController = function($scope, $http,$location,$modal,$log) {
 	    
 	};
 	
-	$("#add_usersList .ui-pg-div").click(function(ev){
+	$("#add_playersList .ui-pg-div").click(function(ev){
 		$("#openAddNewUserModal").click();
 		//$scope.open();
 	});
 };
+
+
 
 var ModalInstanceCtrl = function ($http,$scope, $modalInstance, items) {
 
@@ -208,7 +210,7 @@ var ModalInstanceCtrl = function ($http,$scope, $modalInstance, items) {
 		if(this.createUserForm.$valid){
 			this.onError = false;
 			
-			$http.post('rest/protected/users/create',$scope.requestObject)
+			$http.post('rest/protected/player/create',$scope.requestObject)
 			.success(function(response) {
 
 				if(response.code === 200){

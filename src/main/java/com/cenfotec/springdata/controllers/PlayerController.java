@@ -54,6 +54,7 @@ public class PlayerController {
 		}
 		
 		playerResponse.setPlayers(viewPlayers);
+		System.out.println("Players array size: " + playerResponse.getPlayers().size());
 		return playerResponse;		
 	}
 	

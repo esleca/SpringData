@@ -2,16 +2,16 @@
 
 var SpringData = {};
 
-var App = angular.module('SpringData', []);
+var App = angular.module('SpringData', ['ngGrid','ngTable','ngDragDrop', 'ui.bootstrap','angularFileUpload']);
 
 // Declare app level module which depends on filters, and services
 App.config(function ($routeProvider,$provide,$httpProvider) {
 	
 	$routeProvider.when('/', {
-        templateUrl: 'home',
+        templateUrl: 'layoutservice/playerslayout',
         controller: HomeController
     });
-
+	
 	$routeProvider.otherwise({redirectTo: '/'});
 	
 	//RESPONSE INTERCEPTOR FOR ALL THE ANGULAR CALLS
@@ -23,7 +23,7 @@ App.config(function ($routeProvider,$provide,$httpProvider) {
 			}, function(response) {
 				// do something on error
 				if(response.status === 401){
-					window.location.href = "/";
+					window.location.href = "/springdata/#/home";
 				}
 				return $q.reject(response);
 			});
@@ -38,7 +38,7 @@ App.config(function ($routeProvider,$provide,$httpProvider) {
 	    },
 	    complete: function(response) {
 	    	if(response.status === 401){
-				window.location.href = "/";
+				window.location.href = "/springdata/#/home";
 			}
 	    }
 	});
