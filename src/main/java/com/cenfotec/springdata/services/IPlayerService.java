@@ -7,8 +7,6 @@ import com.cenfotec.springdata.ejb.Player;
 
 public interface IPlayerService {
 
-	Player getPlayerByFirstname(String firstname);
-	Player getPlayerByLastname(String lastname);
 	Page<Player> getAllPlayers(PlayerRequest pr);
 	
 	Boolean savePlayer(Player player);

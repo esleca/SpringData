@@ -29,7 +29,7 @@ public class HibernateConfig {
 	private String driverClassName = "com.mysql.jdbc.Driver";
     private String url = "jdbc:mysql://localhost:3306/springdata";
     private String username = "root"; 
-    private String password = "";
+    private String password = "root";
     
     @Bean()    
     public DataSource getDataSource()

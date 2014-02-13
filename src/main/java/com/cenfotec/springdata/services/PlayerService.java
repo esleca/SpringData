@@ -17,16 +17,7 @@ public class PlayerService implements IPlayerService{
 	@Autowired
 	PlayerRepository playerRepository;
 	
-	@Override
-	public Player getPlayerByFirstname(String firstname){
-		return playerRepository.findByFirstname(firstname);
-	}
-	
-	@Override
-	public Player getPlayerByLastname(String lastname){
-		return playerRepository.findByLastname(lastname);
-	}
-	
+		
 	@Override
 	public Page<Player> getAllPlayers(PlayerRequest ur){
 		
@@ -43,7 +34,19 @@ public class PlayerService implements IPlayerService{
 			pr = new PageRequest(ur.getPageNumber(), ur.getPageSize());
 		}
 		
-		return playerRepository.findAll(pr);
+		Page<Player> result;
+		if(ur.getSearchColumn().toLowerCase().equals("all")){
+			result = playerRepository.findAll(pr);
+		}else if(ur.getSearchColumn().toLowerCase().equals("firstname")){
+			result = playerRepository.findByFirstnameContaining(ur.getSearchTerm(),pr);
+		} else if(ur.getSearchColumn().toLowerCase().equals("lastname")){
+			result = playerRepository.findByLastnameContaining(ur.getSearchTerm(),pr);
+		} else if(ur.getSearchColumn().toLowerCase().equals("dorsal")){
+			result = playerRepository.findByDorsalContaining(ur.getSearchTerm(),pr);
+		} else {
+			result = playerRepository.findAll(pr);
+		}
+		return result;		
 	}
 	
 	@Override

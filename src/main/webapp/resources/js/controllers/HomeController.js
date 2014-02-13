@@ -94,6 +94,7 @@ var HomeController = function($scope, $http,$location, $modal, $log) {
 			$(grid_selector).setGridParam({'postData':JSON.stringify($scope.requestObject)}).trigger("reloadGrid");
 		},
 		rowNum : 10,
+		height : 200,
 		rowList : [ 10, 20, 30 ],
 		pager : pager_selector,
 		sortname : 'id',

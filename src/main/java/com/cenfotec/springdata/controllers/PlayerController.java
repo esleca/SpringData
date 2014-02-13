@@ -54,7 +54,7 @@ public class PlayerController {
 		}
 		
 		playerResponse.setPlayers(viewPlayers);
-		System.out.println("Players array size: " + playerResponse.getPlayers().size());
+		System.out.println("Players array size: " + playerResponse.getPlayers().get(0).getTeamId());
 		return playerResponse;		
 	}
 	

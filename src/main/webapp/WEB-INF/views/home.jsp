@@ -23,6 +23,7 @@
 									<button type="button" class="btn btn-default active" ng-click="setSearchColumn('all',$event)">All</button>
 									<button type="button" class="btn btn-default" ng-click="setSearchColumn('firstName',$event)">First Name</button>
 									<button type="button" class="btn btn-default" ng-click="setSearchColumn('lastName',$event)">Last Name</button>
+									
 								</div>
 							</div>
 					      		      

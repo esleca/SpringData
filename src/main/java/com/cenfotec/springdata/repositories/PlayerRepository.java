@@ -8,7 +8,8 @@ import com.cenfotec.springdata.ejb.Player;
 
 public interface PlayerRepository extends CrudRepository<Player, Integer>{
 	
-	Player findByFirstname(String pFirstName);
-	Player findByLastname(String pLastName);
+	Page<Player> findByFirstnameContaining(String pFirstName, Pageable pageable);
+	Page<Player> findByLastnameContaining(String pLastName, Pageable pageable);
+	Page<Player> findByDorsalContaining(String pDorsal, Pageable pageable);
 	Page<Player> findAll(Pageable pageable);
 }
